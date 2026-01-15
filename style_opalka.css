@@ -1,0 +1,172 @@
+/* reset */
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background: black !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/* sfondo dinamico */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    transition: background-color 1s linear;
+    background-color: rgb(0, 0, 0);
+}
+
+/* numero centrato in altezza e larghezza */
+.counter-container {
+    position: fixed;
+    inset: 0;
+    /* prende tutta la finestra */
+    display: flex;
+    justify-content: center;
+    /* centra orizzontalmente */
+    align-items: center;
+    /* centra verticalmente */
+    z-index: 20;
+    pointer-events: none;
+    flex-direction: column;
+    /* per poter mettere sottotitolo sotto */
+    text-align: center;
+}
+
+#dayCounter {
+    font-size: 150px;
+    font-weight: 900;
+    color: white;
+    /* colore dinamico dal JS */
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+/* sottotitolo sotto al numero, centrato solo in orizzontale */
+.subtitle {
+    font-size: 2rem;
+    color: white;
+    /* sempre bianco */
+    margin-top: -10px;
+    /* distanza dal numero */
+    position: relative;
+    /* non influenza il posizionamento verticale del numero */
+}
+
+.counter-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* pannelli */
+.panel {
+    min-height: 100vh;
+    height: 100vh;
+    font-size: 3rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.panel.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* prima sezione */
+.panel-first {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+
+/* freccia scroll */
+.arrow-container {
+    position: absolute;
+    bottom: 20px;
+    left: 5%;
+    /* centrata orizzontalmente */
+    transform: translateX(-50%);
+    font-size: 4.5rem;
+    /* dimensione grande */
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    z-index: 1000;
+}
+
+.arrow-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.panel-opalka {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opalka-wrapper {
+    width: 70%;
+    max-width: 950px;
+    height: 70vh;
+
+    display: flex;
+    justify-content: center;
+
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+}
+
+.opalka-text {
+    flex: 0 0 60%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding: 14px 18px;
+    box-sizing: border-box;
+
+    color: black;
+    text-align: justify;
+
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+
+    /*adattamento testo*/
+    font-size: clamp(0.7rem, 1.05vw, 1.15rem);
+    line-height: 1.35;
+}
+
+.opalka-text p {
+    margin: 0;
+}
+
+.opalka-image {
+
+    flex: 1;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 28px;
+    box-sizing: border-box;
+}
+
+.opalka-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
